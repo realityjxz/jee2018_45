@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+  		"-//Apache Struts//XWork Validator 1.0.3//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+	<field name="test_int">
+		<field-validator type="int">
+			<param name="min">20</param>
+			<param name="max">50</param>
+			<!-- <message>超出范围[${min},${max}]</message> -->
+			<message key="test_int.outof.range" />
+		</field-validator>
+	</field>
+	<field name="test_double">
+		<field-validator type="double">
+			<param name="minInclusive">30</param>
+			<param name="maxInclusive">60</param>
+			<message>超出范围[${minInclusive},${maxInclusive}]</message>
+		</field-validator>
+	</field>
+	<field name="test_stringlength">
+	   <field-validator type="requiredstring">
+	     <message>没有输入值</message>
+	   </field-validator>
+	  <field-validator type="stringlength">
+	     <param name="minLength">3</param>
+	     <message>至少3个字符，现在有${test_stringlength.length()}</message>
+	  </field-validator>
+	</field>
+	<field name="pass">
+	<field-validator type="stringlength" short-circuit="true">
+	     <param name="minLength">3</param>
+	     <message>至少3个字符，现在有${pass.length()}</message>
+	  </field-validator>
+	   <field-validator type="fieldexpression">
+	    <param name="expression">pass.equals(repass)</param>
+	    <message>两次输入密码不一致</message>	     
+	   </field-validator>
+	</field>
+	<validator type="expression">
+	  <param name="expression">pass.startsWith("123")</param>
+	  <message>密码没有以123开头</message>	  
+	</validator>
+</validators>
