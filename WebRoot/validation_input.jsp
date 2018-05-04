@@ -1,5 +1,7 @@
 <%@ page language="java" pageEncoding="utf-8" contentType="text/html;charset=utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
+<%@ taglib prefix="sjr" uri="/struts-jquery-richtext-tags"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -21,6 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 <s:head/>
+<sj:head/>
   </head>
   
   <body>
@@ -32,6 +35,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <s:textfield name="test_stringlength" label="test_stringlength(>3)"/>
        <s:textfield name="pass" label="pass"/>
        <s:textfield name="repass" label="repass"/>
+       <sj:datepicker name="test_date_jquery" label="Select a Date"
+            displayFormat="%{getText('format.date.input')}"
+            changeMonth="true" changeYear="true" />
+            <sjr:ckeditor
+					id="richtextEditor"
+					name="echo"
+					rows="10"
+					cols="80"
+					width="730"
+					height="250"/>
        <s:submit/>
     </s:form>
     
